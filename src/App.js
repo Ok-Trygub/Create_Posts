@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, Routes} from "react-router-dom";
+import MainPage from './pages/MainPage/MainPage';
+import CreatePost from './pages/CreatePost/CreatePost';
+import FullPost from './pages/FullPost/FullPost';
+import {Container, Header, Content, Grid, Row} from "rsuite";
+import Navigation from './components/Navigation/Navigation';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Container>
+                <Grid>
+                    <Row>
+                        <Header style={{'margin': '20px 0 15px'}}>
+                            <Navigation/>
+                        </Header>
+                    </Row>
+                </Grid>
+
+                <Content>
+                    <Routes>
+                        <Route path="/" element={<MainPage/>}/>
+                        <Route path="createPost" element={<CreatePost/>}/>
+                        <Route path="fullPost/:id" element={<FullPost/>}/>
+
+                    </Routes>
+                </Content>
+            </Container>
+        </div>
+    );
 }
 
 export default App;
