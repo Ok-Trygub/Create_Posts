@@ -15,10 +15,10 @@ export const postsApi = createApi({
             providesTags: (result) => {
                 return result
                     ? [
-                        ...result.map(({ id }) => ({ type: 'Posts', id })),
-                        { type: 'Posts', id: 'LIST' },
+                        ...result.map(({id}) => ({type: 'Posts', id})),
+                        {type: 'Posts', id: 'LIST'},
                     ]
-                    : [{ type: 'Posts', id: 'LIST' }]
+                    : [{type: 'Posts', id: 'LIST'}]
             }
         }),
 
@@ -47,14 +47,15 @@ export const postsApi = createApi({
 
         editPost: build.mutation({
             query: (data) => {
-            const {id, ...dataPost} = data
-               return {
-                url: `posts/${id}`,
-                method: 'PUT',
-                body:{
-                    ...dataPost
+                const {id, ...dataPost} = data
+                return {
+                    url: `posts/${id}`,
+                    method: 'PUT',
+                    body: {
+                        ...dataPost
+                    }
                 }
-            }},
+            },
             invalidatesTags: [{type: 'Posts', id: 'LIST'}]
         }),
 
@@ -66,8 +67,6 @@ export const postsApi = createApi({
             }),
             invalidatesTags: [{type: 'Posts', id: 'LIST'}]
         })
-
-
     })
 });
 

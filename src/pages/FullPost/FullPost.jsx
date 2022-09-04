@@ -68,14 +68,15 @@ const FullPost = () => {
                                 <Modal.Title>Edit Post</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-
                                 <EditPost
                                     onSubmitHandler={editPostHandler}
                                     title={data.title}
                                     body={data.body}
+                                    onClickBtnHandler={handleClose}
                                 />
                             </Modal.Body>
                         </Modal>
+
 
                         <Button color="red" appearance="ghost" onClick={deletePostHandler}>
                             Delete post

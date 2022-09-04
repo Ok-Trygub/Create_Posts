@@ -17,13 +17,11 @@ const CreatePost = () => {
         navigate('/')
     }
 
-
     return (
         <Grid>
             <EditPost
                 onSubmitHandler={createPostHandler}
             />
-
         </Grid>
     );
 };

@@ -4,13 +4,12 @@ import {useState} from "react";
 import PropTypes from 'prop-types';
 
 
-const EditPost = ({onSubmitHandler, title, body}) => {
+const EditPost = ({onSubmitHandler, onClickBtnHandler, title, body}) => {
 
     EditPost.propTypes = {
         title: PropTypes.string,
         body: PropTypes.string
     }
-
 
     const formDefaultState = {
         title: title ? title : '',
@@ -18,7 +17,6 @@ const EditPost = ({onSubmitHandler, title, body}) => {
     }
 
     const [postData, setPostData] = useState({...formDefaultState});
-
 
     const updatePostData = ({target}) => {
         const updatedPostData = {...postData};
@@ -32,10 +30,9 @@ const EditPost = ({onSubmitHandler, title, body}) => {
         setPostData({...formDefaultState});
     }
 
-
     const model = Schema.Model({
-        title: Schema.Types.StringType().isRequired('isRequired').containsLetter('isRequired').minLength(1, 'Minimum 1 characters required'),
-        body: Schema.Types.StringType().isRequired('isRequired').containsLetter('isRequired').minLength(1, 'Minimum 1 characters required')
+        title: Schema.Types.StringType().isRequired('isRequired').containsLetter('isRequired').minLength(5, 'Minimum 5 characters required'),
+        body: Schema.Types.StringType().isRequired('isRequired').containsLetter('isRequired').minLength(5, 'Minimum 5 characters required')
     });
 
     return (
@@ -50,7 +47,7 @@ const EditPost = ({onSubmitHandler, title, body}) => {
             </Form.Group>
 
             <ButtonToolbar>
-                <Button appearance="primary" type="submit">
+                <Button appearance="primary" type="submit" onClick={onClickBtnHandler}>
                     Submit
                 </Button>
             </ButtonToolbar>
